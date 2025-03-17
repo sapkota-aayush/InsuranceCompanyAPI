@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'insurance_app',
     'django_filters',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -139,4 +140,8 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',  # For JSON response
         'rest_framework.renderers.BrowsableAPIRenderer',  # For API browser view
     ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+
 }

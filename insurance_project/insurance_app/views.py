@@ -4,6 +4,7 @@ from django_filters import rest_framework as filters
 from .models import Customer, Policy
 from .serializers import CustomerSerializer, PolicySerializer
 from .pagination import CustomerPagination, PolicyPagination
+from .authentication import IsManager
 
 
 
@@ -30,8 +31,8 @@ class CustomerViewset(BaseViewSet):
 class PolicyViewSet(BaseViewSet):
     queryset = Policy.objects.all()
     serializer_class = PolicySerializer
-    filterset_fields = ['policy_number', 'customer__first_name']  # Specify fields to filter for Policy model
-    search_fields = ['policy_number']  # Specify search fields for Policy model
-    ordering_fields = ['policy_number']  # Specify ordering fields for Policy model
+    filterset_fields = ['policy_type', 'customer__first_name']  # Specify fields to filter for Policy model
+    search_fields = ['policy_type']  # Specify search fields for Policy model
+    ordering_fields = ['coverage_amount']  # Specify ordering fields for Policy model
     pagination_class = PolicyPagination  # Overrides global setting
 
