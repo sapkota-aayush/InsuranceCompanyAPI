@@ -15,4 +15,8 @@ urlpatterns = [
     # JWT authentication endpoints
     path('auth/jwt/create/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/jwt/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
+    #djoser endpoints
+    path('auth/',include('djoser.urls')),#for registration,password reset etc
+    path('auth/',include('djoser.urls.jwt')), #for jwt-based authentication with djoser
 ]

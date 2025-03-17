@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'insurance_app',
     'django_filters',
     'rest_framework_simplejwt',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -144,4 +145,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 
+}
+
+SIMPLE_JWT={
+    'AUTH_HEADER_TYPES':('Token'), #Here in the postman or any testing software you can use token and your token instead of writing baerer
 }
