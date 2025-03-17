@@ -5,6 +5,25 @@ from .models import Customer, Policy
 from .serializers import CustomerSerializer, PolicySerializer
 from .pagination import CustomerPagination, PolicyPagination
 from .authentication import IsManager
+from .sanitizer import sanitize
+
+
+
+def sanitize_input_data(self, data):
+    return sanitize(data) # calls the sanitize function from sanitizer.py
+
+#All funtion below is import to store sanitized data in data as above function will sanitize the data but wont save that data in database
+def create(self, request, *args, **kwargs): 
+    sanitized_data = self.sanitize_input_data(request.data)
+    return super().create(request, *args, **kwargs)
+
+def update(self, request, *args, **kwargs):
+    sanitized_data = self.sanitize_input_data(request.data)
+    return super().update(request, *args, **kwargs)
+
+def partial_update(self, request, *args, **kwargs):
+    sanitized_data = self.sanitize_input_data(request.data)
+    return super().partial_update(request, *args, **kwargs)
 
 
 
